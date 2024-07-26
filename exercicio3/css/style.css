@@ -72,7 +72,7 @@ body {
 }
 
 .menu-principal__item--atual {
-    color: "#f44242";
+    color: #f44242;
 }
 
 .rodape {
@@ -163,6 +163,11 @@ img {
     margin-bottom: 20px;
 }
 
+.pagina-conteudo img {
+    display: flex;
+    align-self: center;
+}
+
 .text-center {
     text-align: center;
 }
@@ -204,4 +209,11 @@ img {
     font-size: 18px;
     margin-left: 15px;
     border-left: 1px solid #000;
+}
+
+.img-web {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
 }
