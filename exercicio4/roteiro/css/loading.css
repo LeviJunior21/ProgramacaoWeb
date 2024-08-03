@@ -23,7 +23,7 @@
     height: 5px;
     width: 100%;
     position: absolute;
-    background-color: #00205b;
+    background-color: purple;
     animation: loading-bar-color 2s ease-in infinite; 
     z-index: 10;
 }

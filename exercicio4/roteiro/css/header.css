@@ -5,7 +5,7 @@
 header {
     width: calc(100% - 40px);
     height: 100px;
-    background-color: red;
+    background-color: #00205b;
 
     display: flex;
     align-items: center;
