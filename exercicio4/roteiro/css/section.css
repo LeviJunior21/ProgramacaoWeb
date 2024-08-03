@@ -1,0 +1,63 @@
+section.section-area {
+    grid-area: section-area;
+    position: relative;
+    height: calc(100vh - 100px);
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+article {
+    width: calc(100% - 50px);
+    height: 80px;
+    display: flex;
+    margin-top: 40px;
+    margin-left: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+article .input-container {
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+    font-size: 30px;
+    align-items: center;
+    border-bottom: 2px solid;
+}
+
+article h1 {
+    font-size: 30px;
+}
+
+article .input-container input {
+    height: 30px;
+    width: 704px;
+    border: 0;
+    font-size: 26px;
+}
+
+article .input-container input:focus {
+    outline: none;
+}
+
+article .input-container h1 {
+    font-size: 30px;
+}
+
+article .content-content:nth-child(1) {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    
+}
+
+article .content-content:nth-child(2) {
+    background-color: red;
+}
+
+.result {}

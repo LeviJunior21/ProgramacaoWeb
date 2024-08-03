@@ -1,0 +1,35 @@
+@media (max-width: 560px) {
+    section {
+        flex-grow: 1;
+    }
+}
+
+@keyframes loading-bar-color {
+    0% {
+        width: 0px;
+    }
+    50% {
+        width: 50%;
+        margin-left: 0;
+    }
+    100% {
+        margin-left: 100%;
+        width: 0;
+        transform: translateX(100%);
+    }
+}
+
+.loading-bar {
+    height: 5px;
+    width: 100%;
+    position: absolute;
+    background-color: #00205b;
+    animation: loading-bar-color 2s ease-in infinite; 
+    z-index: 10;
+}
+
+@media (max-width: 560px) {
+    .loading-bar {
+        animation: loading-bar-color 1.5s ease-in infinite;
+    }
+}

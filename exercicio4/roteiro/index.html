@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/aside.css">
+    <link rel="stylesheet" href="./css/section.css">
+    <link rel="stylesheet" href="./css/loading.css">
+    <script src="index.js"></script>
+</head>
+<body>
+    <header>
+        <img src="UFCG.png"/>
+        <h1>Exercícios de Programação para Web</h1>
+        <div></div>
+    </header>
+    <div class="loading-bar"></div>
+
+    <main>
+        <section class="section-area">
+            <article>
+                <h1>Digite a entrada</h1>
+                <div class="input-container">
+                    <input type="text" placeholder="Escreva aqui!" id="input-value">
+                </div>
+            </article>
+            <article>
+                <h2 id="result">Resultado: Aguardando dados...</h2>
+            </article>
+        </section>
+        <aside class="aside-area">
+            <h2>Escolha a questão</h2>
+
+            <div class="choice-container">
+                <div class="input-radio-container">
+                    <input class="input-radio" type="radio" id="choice1" name="question" value="question1">
+                    <p>Questão 1</p>
+                </div>
+                <div class="input-radio-container">
+                    <input class="input-radio" type="radio" id="choice2" name="question" value="question2">
+                    <p>Questão 2</p>
+                </div>
+                <div class="input-radio-container">
+                    <input class="input-radio" type="radio" id="choice3" name="question" value="question3">
+                    <p>Questão 3</p>
+                </div>
+                <div class="input-radio-container">
+                    <input class="input-radio" type="radio" id="choice4" name="question" value="question4">
+                    <p>Questão 4</p>
+                </div>
+                <div class="input-radio-container">
+                    <input class="input-radio" type="radio" id="choice5" name="question" value="question5">
+                    <p>Questão 5</p>
+                </div>
+                <div class="input-radio-container">
+                    <input class="input-radio" type="radio" id="choice6" name="question" value="question6">
+                    <p>Questão 6</p>
+                </div>
+                <div class="input-radio-container">
+                    <input class="input-radio" type="radio" id="choice7" name="question" value="question7">
+                    <p>Questão 7</p>
+                </div>
+                <div class="input-radio-container">
+                    <input class="input-radio" type="radio" id="choice8" name="question" value="question8">
+                    <p>Questão 8</p>
+                </div>
+                <div class="input-radio-container">
+                    <input class="input-radio" type="radio" id="choice9" name="question" value="question9">
+                    <p>Questão 9</p>
+                </div>
+                <div class="input-radio-container">
+                    <input class="input-radio" type="radio" id="choice10" name="question" value="question10">
+                    <p>Questão 10</p>
+                </div>
+            </div>
+
+            <div class="confirm-container">
+                <button onclick={confirmar()}>Confirmar</button>
+            </div>
+        </aside>
+        
+    </main>
+    <footer></footer>
+</body>
+</html>
