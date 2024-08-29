@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercícios de Manipulação do DOM</title>
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </head>
+    <body>
+
+    <h1>Exercícios de Manipulação do DOM</h1>
+
+    <section id="Etapa01">
+        <h2>1. Modificar o conteúdo de parágrafos</h2>
+        <p id="texto1">Texto 1</p>
+        <p id="texto2">Texto 2</p>
+        <p id="texto3">Texto 3</p><br>
+        <input id="input1" type="text" placeholder="Digite o texto 1">
+        <input id="input2" type="text" placeholder="Digite o texto 2">
+        <input id="input3" type="text" placeholder="Digite o texto 3">
+        <button onclick="alterarTextos()">Alterar Textos</button>
+    </section>
+
+    <section id="Etapa02">
+        <h2>2. Adicionar e remover elementos no final da lista de itens</h2>
+        <ul id="listaItens">
+            <li>Item 1</li>
+            <li>Item 2</li>
+        </ul>
+        <button onclick="adicionarItem()">Adicionar Item</button>
+        <button onclick="removerItem()">Remover Item</button>
+    </section>
+
+    <section id="Etapa03">
+        <h2>3. Modificar estilos de inputs do tipo text</h2>
+        <input id="inputCor" type="text" placeholder="Cor a ser aplicada (ex.: yellow)">
+        <button onclick="mudarCorFundo()">Mudar Cor de Fundo</button><br>
+        <input type="text" placeholder="Campo de entrada 1">
+        <input type="text" placeholder="Campo de entrada 2">
+    </section>
+
+    <section id="Etapa04">
+        <h2>4. Ocultar e Exibir Elementos</h2>
+        <img id="imagem" src="./images/js.png" alt="Placeholder Image"><br>
+        <button onclick="ocultarImagem()">Ocultar Imagem</button>
+        <button onclick="exibirImagem()">Exibir Imagem</button>
+    </section>
+
+    <section id="Etapa05">
+        <h2>5. Mover Elementos na Página</h2>
+        <div id="divDeslizavel"></div>
+        <br>
+        <button onclick="mover('esquerda')"><i class="fa-solid fa-arrow-left"></i></button>
+        <button onclick="mover('direita')"><i class="fa-solid fa-arrow-right"></i></button>
+        <button onclick="mover('cima')"><i class="fa-solid fa-arrow-up"></i></button>
+        <button onclick="mover('baixo')"><i class="fa-solid fa-arrow-down"></i></button>
+    </section>
+
+    <section id="Etapa06">
+        <h2>6. Trocar Classe de Elementos</h2>
+        <p id="classeParagrafo" class="classeAzul">Este parágrafo é da classe azul.</p>
+        <button onclick="alternarClasse()">Alternar Classe</button>
+    </section>
+
+    <section id="Etapa07">
+        <h2>7. Galeria de Imagens com Zoom</h2>
+        <div>
+            <img src="./images/html100.png" alt="Miniatura 1" onclick="mostrarImagemMaior(this)">
+            <img src="./images/js100.png" alt="Miniatura 2" onclick="mostrarImagemMaior(this)">
+            <img src="./images/css100.png" alt="Miniatura 3" onclick="mostrarImagemMaior(this)">
+        </div>
+        <div id="imagem-maior-container" style="margin-top: 20px;">
+            <img id="imagem-maior" src="./images/html300.png" alt="Imagem Grande">
+        </div>
+    </section>
+
+    <section id="Etapa08">
+        <h2>8. Validação de campos de um formulário</h2>
+        <form onsubmit="return validarFormulario()">
+            <input type="text" id="nome" placeholder="Nome"><br>
+            <input type="text" id="cpf" placeholder="CPF (ex.: 000.000.000-00)"><br>
+            <input type="email" id="email" placeholder="Email"><br>
+            <input type="password" id="senha" placeholder="Senha"><br>
+            <button type="submit">Enviar</button>
+        </form>
+        <p id="mensagem-erro" style="color: red;"></p>
+    </section>
+
+    <section id="Etapa09">
+        <h2>9. Contador Incremental</h2>
+        <p id="contador">0</p>
+        <button onclick="incrementar()"><i class="fa-solid fa-plus"></i></button>
+        <button onclick="decrementar()"><i class="fa-solid fa-minus"></i></button><br>
+        <h2>Desafio1: Um Elefante Incomoda Muita Gente</h2>
+        <p id="musicaElefante" class="classeMusica">Música: Um Elefante Incomoda Muita Gente</p>
+        <div class="letra-musica">
+            <h2>Um Elefante Incomoda Muita Gente</h2>
+            <p id="paragrafoMusica"></p>
+        </div>
+    </section>
+
+    <section id="Etapa010">
+        <h2>10. Filtrar Itens de uma Lista</h2>
+        <input type="text" id="filtro" placeholder="Filtrar itens..." oninput="filtrarItens()">
+        <ul id="lista-professores">
+            <li>ANDREY ELISIO MONTEIRO BRITO</li>
+            <li>CARLOS EDUARDO SANTOS PIRES</li>
+            <li>DALTON DARIO SEREY GUERRERO</li>
+            <li>EANES TORRES PEREIRA</li>
+            <li>ELIANE CRISTINA DE ARAUJO</li>
+            <li>FRANCISCO VILAR BRASILEIRO</li>
+            <li>FRANKLIN DE SOUZA RAMALHO</li>
+            <li>HERMAN MARTINS GOMES</li>
+            <li>HYGGO OLIVEIRA DE ALMEIDA</li>
+            <li>JORGE CESAR ABRANTES DE FIGUEIREDO</li>
+            <li>JOSEANA MACEDO FECHINE REGIS DE ARAUJO</li>
+            <li>LEANDRO BALBY MARINHO</li>
+            <li>LIVIA MARIA RODRIGUES SAMPAIO CAMPOS</li>
+            <li>MAXWELL GUIMARAES DE OLIVEIRA</li>
+            <li>ROHIT GHEYI</li>
+            <li>THIAGO EMMANUEL PEREIRA DA CUNHA SILVA</li>
+            <li>TIAGO LIMA MASSONI</li>
+            <li>WILKERSON DE LUCENA ANDRADE</li>
+            
+        </ul>
+    </section>
+
+    <script src="js/scripts.js"></script>
+
+    </body>
+</html>
