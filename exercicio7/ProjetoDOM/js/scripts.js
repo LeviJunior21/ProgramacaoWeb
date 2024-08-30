@@ -67,7 +67,7 @@ function mover(direcao) {
             box.style.left = `${left - step}px`;
             break;
         case 'direita':
-            box.style.right = `${left + step}px`;
+            box.style.left = `${left + step}px`;
             break;
         case 'cima':
             box.style.top = `${top - step}px`;
@@ -109,9 +109,32 @@ function validarFormulario() {
     const email = document.getElementById('email').value;
     const senha = document.getElementById('senha').value;
     const erro = document.getElementById('mensagem-erro');
-    
-    erro.textContent = '';
-    return true;
+
+    let result = false;
+    let regex_CPF = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+    let regex_Email = /^[\w\.\-]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}(\.[a-zA-Z]{2})?$/;
+    let mensagem_erro = "";
+
+    if (nome.length > 0) {
+        if (regex_CPF.test(cpf)) {
+            if (regex_Email.test(email)) {
+                if (senha.length >= 8) {
+                    result = true;
+                } else {
+                    mensagem_erro = 'Erro: Senha inválida';
+                }
+            } else {
+                mensagem_erro = 'Erro: Email inválido.';
+            }
+        } else {
+            mensagem_erro = 'Erro: CPF inválido.'
+        }
+    } else {
+        mensagem_erro = 'Erro: Nome inválido.';
+    }
+
+    erro.textContent = mensagem_erro;
+    return result;
 }
 
 // Exercício 9: Contador Incremental
@@ -122,14 +145,32 @@ function validarFormulario() {
 let contador = 0;
 function incrementar() {
     contador++;
+    document.getElementById("contador").textContent = contador;
+    geraMusicaElefante(contador);
 }
 
 function decrementar() {
-    contador--;
+    if (contador > 0) {
+        contador--;
+        document.getElementById("contador").textContent = contador;
+        geraMusicaElefante(contador);
+    }
 }
 
-function geraMusicaElefante(numVersos){
+function geraMusicaElefante(numVersos) {
+    let paragrafoMusica = document.getElementById("paragrafoMusica");
+    let letra = "";
 
+    for (let i=0; i < numVersos; i++) {
+        if (i % 2 === 0) {
+            letra += `${i} elefante${i > 1 ? 's' : ''} incomodam muita gente.\n`;
+        } else {
+            let incomodam = i >= 10 ? 'incomodam '.repeat(9) + "... " : 'incomodam '.repeat(i);
+            letra += `${i} elefante${i > 1 ? 's' : ''} ${i > 1 ? incomodam : 'incomoda '}muito mais.\n`;
+        }
+    }
+
+    paragrafoMusica.textContent = letra.trim();
 }
 
 // Exercício 10: Filtrar Itens de uma Lista com callback e arrow function
@@ -139,13 +180,9 @@ function filtrarItens() {
     const filtro = document.getElementById('filtro').value.toLowerCase();
     const itens = document.getElementById('lista-professores').getElementsByTagName('li');
 
-    //Converter o comando de repetição abaixo em uma callback que recebe como parâmetro uma arrow function
-    for (let i = 0; i < itens.length; i++) {
-        let item = itens[i].textContent || itens[i].innerText;
-        if (item.toLowerCase().indexOf(filtro) > -1) {
-            itens[i].style.display = "";
-        } else {
-            itens[i].style.display = "none";
-        }
-    }
+    Array.from(itens).forEach(item => {
+        const texto = item.textContent || item.innerText;
+        item.style.display = texto.toLowerCase().indexOf(filtro) > -1 ? "" : "none";
+    });
+
 }

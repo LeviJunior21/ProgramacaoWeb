@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distribuição de Alunos por Estado</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <div id="map" style="width: 500px; height: 500px;"></div>
+
+    <script>
+        // Dados fictícios de exemplo
+        const stateCounts = [
+            { state: 'AC', count: 500 },
+            { state: 'AL', count: 700 },
+            { state: 'AP', count: 300 },
+            { state: 'AM', count: 800 },
+            { state: 'BA', count: 1500 },
+            { state: 'CE', count: 1200 },
+            { state: 'DF', count: 900 },
+            { state: 'ES', count: 600 },
+            { state: 'GO', count: 1100 },
+            { state: 'MA', count: 1000 },
+            { state: 'MT', count: 400 },
+            { state: 'MS', count: 500 },
+            { state: 'MG', count: 3000 },
+            { state: 'PA', count: 1300 },
+            { state: 'PB', count: 800 },
+            { state: 'PR', count: 1400 },
+            { state: 'PE', count: 1100 },
+            { state: 'PI', count: 700 },
+            { state: 'RJ', count: 2000 },
+            { state: 'RN', count: 600 },
+            { state: 'RS', count: 1700 },
+            { state: 'RO', count: 300 },
+            { state: 'RR', count: 200 },
+            { state: 'SC', count: 1200 },
+            { state: 'SP', count: 5000 },
+            { state: 'SE', count: 400 },
+            { state: 'TO', count: 300 }
+        ];
+
+        // Aplicar transformação logarítmica
+        stateCounts.forEach(item => {
+            item.log_count = Math.log1p(item.count);
+        });
+
+        // Dicionário de códigos de estado IBGE
+        const stateCodeMap = {
+            'AC': '12', 'AL': '27', 'AP': '16', 'AM': '13', 'BA': '29', 'CE': '23', 'DF': '53', 'ES': '32',
+            'GO': '52', 'MA': '21', 'MT': '51', 'MS': '50', 'MG': '31', 'PA': '15', 'PB': '25', 'PR': '41',
+            'PE': '26', 'PI': '22', 'RJ': '33', 'RN': '24', 'RS': '43', 'RO': '11', 'RR': '14', 'SC': '42',
+            'SP': '35', 'SE': '28', 'TO': '17'
+        };
+
+        // Mapear os códigos IBGE aos estados
+        stateCounts.forEach(item => {
+            item.state_code = stateCodeMap[item.state];
+        });
+
+        // Carregar dados GeoJSON dos estados brasileiros
+        const geojsonUrl = 'https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/brazil-states.geojson';
+        
+        fetch(geojsonUrl)
+            .then(response => response.json())
+            .then(geojsonData => {
+                // Configuração do gráfico
+                const data = [{
+                    type: 'choropleth',
+                    locationmode: 'geojson-id',
+                    geojson: geojsonData,
+                    locations: stateCounts.map(d => d.state),
+                    z: stateCounts.map(d => d.log_count),
+                    featureidkey: 'properties.sigla',
+                    colorscale: 'Plasma',
+                    colorbar: {
+                        title: 'Número de Alunos (Log)'
+                    }
+                }];
+
+                const layout = {
+                    title: 'Distribuição de Alunos por Estado de Nascimento em logaritmo de Base 10',
+                    geo: {
+                        fitbounds: "locations",
+                        visible: false,
+                        showframe: false,
+                        showcoastlines: false
+                    }
+                };
+
+                // Renderizar o gráfico
+                Plotly.newPlot('map', data, layout);
+            })
+            .catch(error => console.error('Erro ao carregar GeoJSON:', error));
+    </script>
+</body>
+</html>

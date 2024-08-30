@@ -1,6 +1,5 @@
 // Questão 1: Busca do endereço residencial de Silvio Santos. 
 
-const { error } = require("console");
 const http = require("https")
 
 const dono = {
